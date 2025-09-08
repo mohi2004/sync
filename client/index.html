@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SyncPad - Realtime Collaboration</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Realtime code editor with chat, syntax highlighting, and collaboration." />
+    <meta name="keywords" content="Code Editor, Live Coding, Collaboration, Realtime" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Loader Styles -->
+    <style>
+      :root {
+        --bg: linear-gradient(135deg, #0f0f0f, #1a1a2e, #1e293b); /* Dark gradient */
+        --text: #f8fafc;   /* Light text */
+        --accent: #22d3ee; /* Neon aqua */
+        --muted: #94a3b8;  /* Soft gray */
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        height: 100%;
+      }
+
+      #root {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* === Text Loader === */
+      #loader {
+        position: fixed;
+        inset: 0;
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        animation: fadeIn 0.8s ease-out;
+        text-align: center;
+      }
+
+      #loader h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        color: var(--accent);
+        animation: glow 2s infinite ease-in-out;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+      }
+
+      #loader p {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      /* === Animations === */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.97); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      @keyframes glow {
+        0%, 100% { text-shadow: 0 0 5px #22d3ee55, 0 0 10px #22d3ee33; }
+        50% { text-shadow: 0 0 15px #22d3eeaa, 0 0 25px #22d3ee77; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <!-- React App loads here -->
+      <div id="loader">
+        <h1>SyncPad</h1>
+        <p>Starting up your realtime code editor...</p>
+      </div>
+    </div>
+
+    <!-- React Mount Point -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Remove Loader Script -->
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const removeLoader = () => {
+          const loader = document.getElementById("loader");
+          if (loader) {
+            loader.style.opacity = "0";
+            loader.style.transition = "opacity 0.5s ease";
+            setTimeout(() => loader.remove(), 500);
+          }
+        };
+
+        window.addEventListener("load", () => {
+          setTimeout(removeLoader, 300);
+        });
+      });
+    </script>
+  </body>
+</html>
