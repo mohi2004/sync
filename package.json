@@ -6,6 +6,6 @@
     "start": "concurrently \"cd server && rpm run dev\" \"cd client && rpm run dev\""
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^9.2.1"
   }
 }
