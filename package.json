@@ -1,11 +1,3 @@
-{
-  "name": "sync-project",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "npx concurrently \"cd server && rpm run dev\" \"cd client && rpm run dev\""
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1"
-  }
+"scripts": {
+  "start": "sh start.sh"
 }
