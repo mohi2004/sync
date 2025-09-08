@@ -1,5 +1,8 @@
 {
   "scripts": {
     "start": "./start.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
