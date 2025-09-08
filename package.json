@@ -1,8 +1,11 @@
 {
+  "name": "sync-project",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "start": "./start.sh"
+    "start": "concurrently \"cd server && rpm run dev\" \"cd client && rpm run dev\""
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^8.2.2"
   }
 }
